@@ -1,24 +1,25 @@
-# client
-
-## Project setup
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL
+);
 ```
 
-### Compiles and minifies for production
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+CREATE TABLE cart_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+INSERT INTO products (name, price)
+VALUES
+    ('Товар 1', ROUND(RAND() * 100, 2)),
+    ('Товар 2', ROUND(RAND() * 100, 2)),
+    ('Товар 3', ROUND(RAND() * 100, 2)),
+    ('Товар 4', ROUND(RAND() * 100, 2)),
+    ('Товар 5', ROUND(RAND() * 100, 2));
+```
